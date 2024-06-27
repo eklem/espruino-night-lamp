@@ -1,10 +1,11 @@
-var code = '123';
 var digit = 0;
 var codeTyped = [''];
-var code = '123';
 var open = false;
 var codeStarted = false;
 var s = require("servo").connect(B3);
+var passphraseEncrypted = '1122287887126168932401488510822216238195157';
+var salt = 'sad88hfoiwhe38405';
+var crypto = require("crypto");
 
 
 // Different led messages via LED
@@ -35,8 +36,13 @@ function onKey(key) {
     codeStarted = true;
     console.log('ready for code');
   } else if (character === '*' && codeStarted === true) {
+    var encrypted8array = crypto.PBKDF2(codeTyped, salt);
+    console.log(encrypted8array);
+    encrypted = [].slice.call(encrypted8array);
+    encrypted = encrypted.join('');
+    console.log(encrypted);
     // check if codeTyped === code
-    if (codeTyped === code) {
+    if (encrypted === passphraseEncrypted) {
       s.move(0);
       open = true;
       console.log('*** correct code, opening safe ****');
