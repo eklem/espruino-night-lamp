@@ -11,7 +11,7 @@ function setLocked(isLocked) {
   // then two seconds later turn it off
   setTimeout(function() {
     digitalWrite([LED1,LED2], 0);
-  }, 4000);
+  }, 2000);
   // Now operate a servo motor - give it 1 second of pulses (50 * 20ms) to move it to the new location
   var servoPos = isLocked ? 0 : 1;
   var servoPulses = 0;
