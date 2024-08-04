@@ -1,5 +1,7 @@
 # Espruino Safe
 
+![Hardware setup](https://github.com/eklem/espruino-stuff/blob/trunk/safe/espruino-safe-hardware-setup.jpg)
+
 ## Hardware
 
 * [Espruino Pico](https://www.espruino.com/Pico)
