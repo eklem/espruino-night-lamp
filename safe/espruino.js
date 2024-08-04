@@ -7,6 +7,15 @@ var passphraseEncrypted = '1122287887126168932401488510822216238195157';
 var salt = 'sad88hfoiwhe38405';
 var crypto = require("crypto");
 
+
+// Different led messages via LED - red and green
+// 1: Booted and ready - long green blink
+// 2: Key input - 1 short blink
+// 3: Correct code - 1 long blink
+// 4: Locking - 1 long blink
+// Or 3 LEDs - one for error and two for input feedback
+// 1: Show that it takes input - LED2 is lighting
+
 function resetCodeInput() {
   codeTyped = [''];
   codeStarted = false;
@@ -80,6 +89,8 @@ function message(type) {
 }
 
 message('booted');
+//locking if not locked
+s.move(1);
 
 require("KeyPad").connect([B15,B14,B13],[B10,B1,A7,A6], function(key) {
   onKey(key);
